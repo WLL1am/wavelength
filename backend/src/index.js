@@ -37,6 +37,10 @@ app.use("/api/songs", songRoutes);
 app.use("/api/albums", albumRoutes);
 app.use("/api/stats", statRoutes);
 
+// error handler
+app.use((err, req, res, next) => {
+    res.status(500).json({ message: process.env.MODE_ENV === "production" ? "Internal server error" : err.message });
+})
 
 app.listen(PORT, () => {
     console.log("Server is running on port " + PORT);
