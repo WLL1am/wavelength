@@ -9,7 +9,7 @@ import authRoutes from "./routes/auth.route.js";
 import songRoutes from "./routes/song.route.js";
 import albumRoutes from "./routes/album.route.js";
 import statRoutes from "./routes/stat.route.js";
-
+import { clerkMiddleware } from '@clerk/express'
 
 dotenv.config();
 
@@ -17,6 +17,8 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json()); // parse req.body
+
+app.use(clerkMiddleware()); // add auth to req obj
 
 app.use("/api/users", userRoutes);
 app.use("/api/admin", adminRoutes);
