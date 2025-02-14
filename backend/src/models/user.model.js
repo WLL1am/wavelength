@@ -3,17 +3,17 @@ import mongoose from 'mongoose';
 const userSchema = new mongoose.Schema(
     {
         fullName: {
-            typeof: String,
-            required: true
+            type: String,
+            required: true,
         },
         imageUrl: {
-            typeof: String,
-            required: true
+            type: String,
+            required: true,
         },
         clerkId: {
             type: String, 
             required: true,
-            unique: true
+            unique: true,
         },
     }, 
 { timestamps: true } // createdAt, updatedAt 
