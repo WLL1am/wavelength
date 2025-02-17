@@ -1,10 +1,11 @@
 import { Router } from 'express';
+import { protectRoute, requireAdmin } from '../middleware/auth.middleware.js';
+import { getAllUsers } from '../controller/user.controller.js';
+
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    req.auth.userId
-    res.send('User route with GET method');
-})
+router.get('/', protectRoute, requireAdmin, getAllUsers)
+// TODO: getMessages
 
 export default router
